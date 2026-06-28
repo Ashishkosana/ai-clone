@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ashish Kosana — Chat with my AI clone</title>
+    <meta
+      name="description"
+      content="Talk to Ashish Kosana's AI clone — full-stack engineer (Flutter + AWS serverless)."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/">ashish<span>.</span></a>
+      <nav class="nav">
+        <a href="https://github.com/Ashish1916" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://ashishkosana.com" target="_blank" rel="noopener">Site</a>
+        <a id="linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </header>
+
+    <main class="wrap">
+      <section class="hero">
+        <span class="status"><i></i> Online</span>
+        <h1>Chat with Ashish's AI&nbsp;Clone</h1>
+        <p class="tagline">
+          Software Engineer · Full-stack — Flutter mobile + AWS serverless · recent
+          CS grad, open to SWE / backend / full-stack roles.
+        </p>
+        <label class="topic">
+          <span>I want to ask about</span>
+          <select id="topic">
+            <option value="General">Anything</option>
+            <option value="Experience">Experience</option>
+            <option value="Projects">Projects</option>
+            <option value="Tech stack">Tech stack</option>
+            <option value="Availability">Availability</option>
+            <option value="Education">Education</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="chat" id="chat">
+        <div class="messages" id="messages">
+          <div class="msg bot">Hey — I'm Ashish's AI clone. Ask me about his work, projects, or what he's looking for. What brings you here?</div>
+        </div>
+        <form class="composer" id="composer">
+          <input
+            id="input"
+            type="text"
+            autocomplete="off"
+            placeholder="Type your message…"
+            maxlength="2000"
+          />
+          <button type="submit" id="send">Send</button>
+        </form>
+      </section>
+    </main>
+
+    <!-- Verification modal -->
+    <div class="modal-backdrop" id="modal" hidden>
+      <div class="modal">
+        <h2 id="modal-title">Quick intro</h2>
+        <p id="modal-sub">
+          Tell Ashish who he's talking to, then ask away.
+        </p>
+
+        <form id="lead-form">
+          <input id="f-name" type="text" placeholder="Your name" required />
+          <input id="f-email" type="email" placeholder="Work email" required />
+          <input id="f-phone" type="tel" placeholder="Phone (optional)" />
+          <button type="submit">Start chatting</button>
+        </form>
+
+        <p class="modal-err" id="modal-err"></p>
+        <button class="modal-close" id="modal-close" aria-label="Close">×</button>
+      </div>
+    </div>
+
+    <footer class="foot">Built by Ashish Kosana · powered by AI on AWS</footer>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

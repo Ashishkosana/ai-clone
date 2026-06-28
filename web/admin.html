@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Clone — Admin</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .admin {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 14px;
+        margin: 22px 0;
+      }
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 18px;
+        box-shadow: var(--shadow);
+      }
+      .card .n {
+        font-size: 30px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+      .card .l {
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 4px;
+      }
+      .row {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 14px;
+      }
+      .bar {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 18px;
+      }
+      .bar input {
+        flex: 1;
+        font: inherit;
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+      }
+      .bar button {
+        font: inherit;
+        font-weight: 600;
+        color: #fff;
+        background: var(--accent);
+        border: 0;
+        border-radius: 10px;
+        padding: 10px 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="admin">
+      <h1 style="letter-spacing: -0.03em">AI Clone · Dashboard</h1>
+      <div class="bar">
+        <input id="token" type="password" placeholder="Admin token" />
+        <button id="load">Load</button>
+      </div>
+      <p class="modal-err" id="err"></p>
+
+      <div class="grid" id="grid" hidden>
+        <div class="card"><div class="n" id="leads">0</div><div class="l">Leads</div></div>
+        <div class="card"><div class="n" id="conversations">0</div><div class="l">Conversations</div></div>
+        <div class="card"><div class="n" id="messages">0</div><div class="l">Messages</div></div>
+        <div class="card"><div class="n" id="catcount">0</div><div class="l">Categories</div></div>
+      </div>
+
+      <div class="card" id="catbox" hidden>
+        <div class="l" style="margin-bottom: 8px">By category</div>
+        <div id="cats"></div>
+      </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+      const API = (window.CONFIG?.apiBase || "").replace(/\/?$/, "/");
+      const $ = (id) => document.getElementById(id);
+
+      async function load() {
+        $("err").textContent = "";
+        const token = $("token").value.trim();
+        if (!token) return;
+        try {
+          const res = await fetch(API + "admin/stats", {
+            headers: { Authorization: "Bearer " + token },
+          });
+          const d = await res.json();
+          if (!res.ok) throw new Error(d.error || "Failed");
+          $("leads").textContent = d.leads;
+          $("conversations").textContent = d.conversations;
+          $("messages").textContent = d.messages;
+          const cats = d.categories || {};
+          $("catcount").textContent = Object.keys(cats).length;
+          $("cats").innerHTML = Object.entries(cats)
+            .sort((a, b) => b[1] - a[1])
+            .map(([k, v]) => `<div class="row"><span>${k}</span><strong>${v}</strong></div>`)
+            .join("") || '<div class="l">No leads yet.</div>';
+          sessionStorage.setItem("ac_admin", token);
+          $("grid").hidden = false;
+          $("catbox").hidden = false;
+        } catch (e) {
+          $("err").textContent = e.message;
+        }
+      }
+
+      $("load").addEventListener("click", load);
+      $("token").addEventListener("keydown", (e) => e.key === "Enter" && load());
+      const saved = sessionStorage.getItem("ac_admin");
+      if (saved) {
+        $("token").value = saved;
+        load();
+      }
+    </script>
+  </body>
+</html>

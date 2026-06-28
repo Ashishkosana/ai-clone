@@ -1,0 +1,21 @@
+{
+  "name": "ai-clone-cdk",
+  "version": "0.1.0",
+  "bin": { "ai-clone": "bin/app.js" },
+  "scripts": {
+    "build": "tsc",
+    "synth": "npm run prebuild && cdk synth",
+    "deploy": "npm run prebuild && cdk deploy",
+    "prebuild": "bash scripts/prebuild.sh"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "aws-cdk": "^2.160.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.0"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.160.0",
+    "constructs": "^10.3.0"
+  }
+}

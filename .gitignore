@@ -1,0 +1,7 @@
+node_modules/
+cdk/cdk.out/
+cdk/lambdas/*/common.py
+cdk/lambdas/chat/content/
+*.log
+.env
+.DS_Store
