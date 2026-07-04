@@ -10,7 +10,7 @@ source of truth the persona draws on.
   serverless**; recent CS grad, builder at heart.
 - **Location / authorization**: US-based; on **F-1 OPT**, open to **H-1B sponsorship**
   and **relocation**.
-- **Links**: GitHub github.com/Ashish1916 · site ashishkosana.com · email/phone shared
+- **Links**: GitHub github.com/Ashishkosana · site ashishkosana.com · email/phone shared
   with verified leads.
 
 ## Education
@@ -59,7 +59,7 @@ Full-stack **product** engineering: **Flutter mobile app + AWS serverless backen
 ## How to reach Ashish
 - Serious leads: verify (email/SMS) and leave name + contact + interest so Ashish
   follows up directly.
-- Public links: GitHub github.com/Ashish1916, site ashishkosana.com, and LinkedIn.
+- Public links: GitHub github.com/Ashishkosana, site ashishkosana.com, and LinkedIn.
 
 ## Off-limits / unknowns
 - If asked about anything not covered here (salary expectations, private details,
