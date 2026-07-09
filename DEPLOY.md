@@ -5,7 +5,7 @@ All commands target your **personal** AWS account via `--profile personal`
 
 ## 0. Prerequisites (these gate a working site)
 - **LLM key** — defaults to **Google Gemini (free)**: get a key at aistudio.google.com
-  and put it in the secret as `geminiApiKey`. To switch to Claude later: add
+  and put it in the secret as `geminiApiKey`. To switch to an LLM later: add
   `claudeApiKey` to the secret and set `llmProvider: "claude"` in `cdk.json`, redeploy.
 - **SES out of sandbox** — by default SES only emails *verified* addresses. A public
   site must email arbitrary visitors, so request **SES production access** (Console →
@@ -59,7 +59,7 @@ Edit `content/persona.md` or `content/knowledge.md`, then `npx cdk deploy` (preb
 re-bundles them into the chat Lambda).
 
 ## Cost guardrails already in place
-- Chat is **verified-only** (no token → no Claude call).
+- Chat is **verified-only** (no token → no an LLM call).
 - API Gateway throttled (20 rps / 40 burst).
 - Chat model defaults to `claude-sonnet-4-6` (cheaper); override with the
   `CLAUDE_MODEL` env on `ChatFn` if you want Opus.

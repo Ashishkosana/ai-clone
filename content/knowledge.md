@@ -34,9 +34,9 @@ Full-stack **product** engineering: **Flutter mobile app + AWS serverless backen
 - Disciplined engineering workflow: CI, multi-pass PR review, git rebase hygiene.
 
 ## Personal / side projects
-- **`ja` — job-apply CLI** (the real LLM work): Python CLI that uses the **Claude API**
+- **`ja` — job-apply CLI** (the real LLM work): Python CLI that uses the **an LLM**
   for resume↔job matching, with multi-source job fetching and a FastAPI dashboard.
-  This is where Ashish's LLM/Claude-API experience lives — not at Crewtron.
+  This is where Ashish's LLM/an LLM-API experience lives — not at Crewtron.
 - **Personal AWS learning project**: hands-on SaaS build in a personal AWS account
   (console → CDK) to deepen AWS depth.
 - **This site** — an AI-clone chat built on AWS serverless (Lambda, API Gateway,
